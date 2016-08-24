@@ -1,0 +1,141 @@
+{
+
+  "root": true,
+
+  // See https://github.com/eslint/eslint
+  "parser": "babel-eslint",
+
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2015,
+    "sourceType": "module",
+    "impliedStrict": true,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+
+  "env": {
+    "browser": true,
+    "es6": true,
+    "commonjs": true,
+    "mocha": true,
+    "node": true
+  },
+
+  "globals": { // see common webpack's config - set to false to not allow the user to set them.
+    "IS_LTR": false,
+    "IS_RTL": false,
+    "__SAIL_ENDPOINT__": false,
+    "__PROD__": false,
+    "__DEV__": false
+    # __TEST__ is not set here because we do not want to have test-specific behaviors
+    # The only exception is for the InteractiveComponent event re-ordering, which makes testing much harder
+    # without adding any real benefits (since we are creating browser events programatically the out-of-order
+    # behavior does not happen).
+  },
+
+  "rules": {
+
+    "brace-style": ["error", "1tbs"],
+    "comma-dangle": ["error", "never"],
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "consistent-return": "error",
+    "curly": ["error", "all"],
+    "dot-location": ["error", "property"],
+    "dot-notation": "warn",
+    "eol-last": "error",
+    "eqeqeq": ["error", "smart"],
+    "indent": ["error", 2, {"SwitchCase": 1}],
+    "jsx-quotes": ["error", "prefer-double"],
+    "key-spacing": "warn",
+    "keyword-spacing": "error",
+    "no-alert": "error",
+    "no-array-constructor": "error",
+    "no-debugger": "error",
+    "no-dupe-args": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-empty": "error",
+    "no-ex-assign": "error",
+    "no-extra-boolean-cast": "error",
+    "no-extra-semi": "error",
+    "no-func-assign": "error",
+    "no-inner-declarations": "error",
+    "no-multi-spaces": "error",
+    "no-unsafe-negation": "error",
+    "no-new": "error",
+    "no-new-wrappers": "error",
+    "no-new-object": "error",
+    "no-obj-calls": "error",
+    "no-shadow": ["error", {
+      "allow": [
+        # Allow shadowing of timers (allows using promisified timers)
+        "requestAnimationFrame", "setTimeout"
+      ]
+    }],
+    "no-sparse-arrays": "error",
+    "no-template-curly-in-string": "error",
+    "no-trailing-spaces": "error",
+    "no-undef": "error",
+    "no-underscore-dangle": "off", // the key '_cId' breaks this rule
+    "no-unexpected-multiline": "error",
+    "no-unreachable": "error",
+    "no-unused-expressions": "error",
+    "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
+    "semi": ["error", "always"],
+    "strict": ["error", "global"],
+    "symbol-description": "error",
+    "valid-jsdoc": "error",
+    "valid-typeof": "error",
+    "unicode-bom": "error",
+
+    // See https://github.com/yannickcr/eslint-plugin-react
+    //     https://github.com/facebook/react/blob/master/.eslintrc
+    "react/display-name": "off",
+    "react/jsx-boolean-value": ["error", "always"],
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-curly-spacing": ["error", "never", {"allowMultiline": true}],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-max-props-per-line": "off",
+    "react/jsx-no-bind": ["warn", {"ignoreRefs": true}],
+    "react/jsx-no-duplicate-props": "error",
+    "react/jsx-no-undef": "error",
+    "react/jsx-pascal-case": "error",
+    "react/jsx-sort-props": "off",
+    "react/jsx-sort-prop-types": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/jsx-wrap-multilines": "error",
+    "react/no-danger": "warn",
+    "react/no-did-mount-set-state": "error",
+    "react/no-did-update-set-state": "error",
+    "react/no-is-mounted": "error",
+    "react/no-multi-comp": "warn",
+    "react/no-unknown-property": "warn",
+    "react/prop-types": "error",
+    "react/react-in-jsx-scope": "error",
+    "react/self-closing-comp": "error",
+    "react/sort-comp": ["error", {
+      order: [
+        'lifecycle',
+        'everything-else',
+        '/^on.+$/',
+        'rendering'
+      ],
+      groups: {
+        rendering: [
+          '/^render.+$/',
+          'render'
+        ]
+      }
+    }],
+    "space-before-blocks": "error",
+    "space-before-function-paren": ["error", "never"],
+    "spaced-comment": ["error", "always"],
+    "space-in-parens": ["error", "never"],
+    "space-infix-ops": "error"
+  }
+}
