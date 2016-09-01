@@ -1,5 +1,6 @@
 import React from 'react';
 import * as firebase from 'firebase'; //Import Firebase library
+import Message from './components/Message.jsx';
 
 // Data to authenticate Firebase
 const firebaseConfig = {
@@ -53,15 +54,15 @@ const App = React.createClass({
   render() {
     // Iterates through the messages in state to create HTML elements
     // for each message
-    const messageDivs = this.state.messages.map((message) => {
-      return <p key={message.key}>{message.name}: {message.message}</p>;
+    const messages = this.state.messages.map((message) => {
+      return <Message message={message}/>;
     });
 
     return (
       <div>
         <h2>ChatMe</h2>
         <div>
-          {messageDivs}
+          {messages}
         </div>
       </div>
     );
