@@ -2,6 +2,7 @@ import React from 'react';
 import * as firebase from 'firebase'; //Import Firebase library
 import Message from './components/Message.jsx';
 import Input from './components/Input.jsx';
+import style from './styles/App.less';
 
 // Data to authenticate Firebase
 const firebaseConfig = {
@@ -88,14 +89,22 @@ const App = React.createClass({
 
     return (
       <div>
-        <h2>ChatMe</h2>
-        <div>
-          {messages}
+        <nav className="navbar">
+          <div className="container">
+            <h2>ChatMe</h2>
+          </div>
+        </nav>
+        <div className="container">
+          <div className="eight columns messages">
+            <div className="scrollview">
+              {messages}
+            </div>
+          </div>
+          <div className="four columns">
+              <Input label={"Message"} value={newMessage} onChange={this.handleMessageChange} onKeyPress={this.handleKeyPress} />
+              <Input label={"Name"} value={name} onChange={this.handleNameChange} />
+          </div>
         </div>
-        <div>
-            <Input label={"Message"} value={newMessage} onChange={this.handleMessageChange} onKeyPress={this.handleKeyPress} />
-            <Input label={"Name"} value={name} onChange={this.handleNameChange} />
-      </div>
       </div>
     );
   }
